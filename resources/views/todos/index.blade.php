@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -9,17 +9,6 @@
    
 </div>
        
-            <div class="card mb-4">
-
-                <div class="card-header" style="height:300px;">
-                   
-                </div>
-                <div class="card-body" style="height:300px;">
-                    <p class="card-text">
-                       
-                    </p>
-                </div>
-            </div>
 	    <div class="card mb-4">
 
                    <div class="container" style="margin-top:50px;">
@@ -29,7 +18,7 @@
                    </div>  
                     <div class="form-group">
                         <label >やることを追加してください</label>
-                        <input type="text" name="body"class="form-control" placeholder="todo list" style="max-width:1000px;" required>
+                        <input type="text" name="body" class="form-control" placeholder="todo list" style="max-width:1000px;" required>
                     </div>
                         <button type="submit" class="btn btn-primary" style="width:100px;">追加する</button> 
                        </form>
@@ -39,8 +28,13 @@
     <tr>
       <th></th><th></th><th></th>
     </tr>
-  </thead> -->
-  <tbody>
+    
+
+
+</thead> -->
+  <body>
+
+
     @foreach ($todos as $todo)
     <tr>
       <td>{{$todo->body}}</td>
@@ -94,19 +88,7 @@
 })();
 </script>
 
-                
             
-            <div class="card mb-4">
-
-                <div class="card-header" style="height:300px;">
-
-                </div>
-                <div class="card-body" style="height:300px;">
-                    <p class="card-text">
-
-                    </p>
-                </div>
-            </div>
  
 
  </div>

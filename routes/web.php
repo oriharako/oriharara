@@ -38,8 +38,20 @@ Route::resource('posts', 'PostsController', ['only' => ['create', 'store', 'show
 
 
 Route::resource('comments', 'CommentsController', ['only' => ['store']]);
-Route::get('member/search','SearchController@index')->name('member.search');
 
 
-Route::get('todos/index','TodosController@index'); 
+Route::get('todos/index','TodosController@index')->name('todos.index');
+Route::get('image/output', 'ImageController@output'); 
+
 Route::resource('todos','TodosController', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
+
+Route::get('/upload', 'ImageController@input');
+
+Route::post('/upload', 'ImageController@upload');
+
+
+
+//お問い合わせフォーム
+Route::get('contact', 'ContactController@index')->name('contact');
+Route::post('contact/confirm', 'ContactController@confirm')->name('confirm');
+Route::post('contact/sent', 'ContactController@sent')->name('sent');

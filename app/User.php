@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -36,4 +37,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    //hasMany設定
+    public function posts()
+    {
+        return $this->hasMany('App\Models\Post');
+    }
+    public function images()
+  {
+    // Profileモデルのデータを引っ張てくる
+    return $this->hasOne('App\Image');
+  }
+   
+    
 }
+
+

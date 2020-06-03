@@ -55,8 +55,8 @@
 /*１枚目画像*/
 #img1 {
 	animation-delay: 2s;	/*2秒遅れてアニメーションをスタート*/
-	background: url("https://media.vogue.co.jp/photos/5d565541d8c57500086ff568/master/w_2050,c_limit/aflo_59527950.jpg") no-repeat center center;			/*背景画像の読み込み（古いブラウザ用）*/
-	background: url("https://media.vogue.co.jp/photos/5d565541d8c57500086ff568/master/w_2050,c_limit/aflo_59527950.jpg") no-repeat center center / cover;	/*背景画像の読み込み*/
+	background: url("https://pics.prcm.jp/477f3b45d59b0/82586613/jpeg/82586613_220x220.jpg") no-repeat center center;			/*背景画像の読み込み（古いブラウザ用）*/
+	background: url("https://pics.prcm.jp/477f3b45d59b0/82586613/jpeg/82586613_220x220.jpg") no-repeat center center / cover;	/*背景画像の読み込み*/
 }
 /*２枚目画像*/
 #img2 {

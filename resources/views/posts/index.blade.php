@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -9,12 +9,15 @@
     <a href="{{ route('posts.create') }}" class="btn btn-success">
         投稿を新規作成する
     </a>
+ 
 </div>
+
+     
         @foreach ($posts as $post)
             <div class="card mb-4">
 
                 <div class="card-header">
-                    {{ $post->title }}
+                   {{$post->title}}
                 </div>
                 <div class="card-body">
                     <p class="card-text">
@@ -43,4 +46,14 @@
     {{ $posts->links() }}
 </div>
     </div>
+	@if(!empty($posts))
+          <div class="row">
+            @foreach($posts as $recipe)
+            <div class="col-md-3">
+              {{ $recipe->body }}
+            </div>
+            @endforeach
+           </div>
+        @endif
+
 @endsection

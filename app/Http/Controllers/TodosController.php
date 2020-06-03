@@ -1,17 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
 use App\Todo;
 
 class TodosController extends Controller
 {
     //
  public function index() {
-           $todos = Todo::all();
-      return view('todos.index')->with('todos',$todos);
+      $todos = Todo::all();
+      return view('todos.index')->with('todos', $todos);
     }
  public function store(Request $request) {
       $todo = new Todo();

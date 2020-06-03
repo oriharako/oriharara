@@ -9,27 +9,9 @@
                 <label for=“text”>ユーザー名</label>
                 <input class=“form-control” name="name" type="text" value="">
 		 </div>
-                <div class="form-group">
-                    <label for=“purpose”>目的</label>
-                    <select name="purpose">
-  @foreach(config('purpose.purpose') as $index => $name)
-    <option value="{{ $index }}">$name</option>
-  @endforeach
-</select>
-
-                </div>
-                <div class="form-group">
-                    <label for=“birthplace”>出身地</label>
-                    <select name="birthplace">
-  @foreach(config('birthplace.birthplace') as $index => $name)
-    <option value="{{ $index }}">$name</option>
-  @endforeach
-</select>
-
-                </div>
                 <input type = "submit" value = "送信">
                  </form>
-        </div>
+        	</div>
         <div class="col-sm-8">
             <div class="text-center my-4">
                 <h3 class="brown p-2">ユーザ一覧</h3>

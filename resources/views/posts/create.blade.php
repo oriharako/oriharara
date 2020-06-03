@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('content')
     <div class="container mt-4">
@@ -12,6 +12,7 @@
 
                 <fieldset class="mb-4">
                     <div class="form-group">
+　　　　　　　　　　　　<input type="hidden" name="id" value= $id>
                         <label for="title">
                             タイトル
                         </label>
@@ -48,6 +49,7 @@
                     </div>
 
                     <div class="mt-5">
+                        <input type="hidden" name= "user_id" value=$id>
                         <a class="btn btn-secondary" href="{{ route('posts.index') }}">
                             キャンセル
                         </a>

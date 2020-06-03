@@ -1,0 +1,38 @@
+  <?php
+declare(strict_types=1);
+
+namespace App\Http\Controllers;
+
+use App\Events\Posted;
+use App\Models\Chat;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+
+class ChatController extends Controller
+{
+
+    /**
+     * @return View
+     */
+    public function index() : View
+    {
+        $chats = Chat::all();
+        return view('channels.index',[
+            "chats" => $chats
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function create(Request $request) : JsonResponse
+    {
+        $chat = new Chat($request->all());
+        $chat->save();
+        event(new Posted($chat));
+
+        return response()->json(['message' => '投稿しました。']);
+    }
+}

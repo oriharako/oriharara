@@ -15,6 +15,14 @@ class Post extends Model
          {
                  return $this->hasMany('App\Models\Comment');
          }
+
+
+
+           //belongsTo設定
+         public function user()
+         {
+         return $this->belongsTo('App\User');
+         }
 }
     //
 

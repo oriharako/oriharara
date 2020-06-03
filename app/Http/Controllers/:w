@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request,
-App\Http\Controllers\Controller;
-
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 use App\Models\Post;
 
@@ -15,50 +12,46 @@ use App\Models\Comment;
 
 use Illuminate\Support\Facades\DB;
 
-use Illuminate\Session\Store;
-
 class PostsController extends Controller
 {
     //
 public function index(Request $request)
     {
 
-
+	$search = $request->input('search');
 	
 	$query = DB::table('posts');
+	//もしキーワードがあったら
+	if (!empty($search)) {
+		$search_split = mb_convert_kana($search, 's');
+
+		 $search_split2 = preg_split('/[\s]+/', $search_split, -1, PREG_SPLIT_NO_EMPTY);
+
+		foreach ($search_split2 as $value) {
+		$query->where('body', '=', $search)->get();
+		}
+	}
 
 	$posts = Post::orderBy('created_at', 'desc')->paginate(10);
   
-        return view('posts.index', compact('data', 'posts'));
+        return view('posts.index', ['posts' => $posts]);
 
 
     }
 public function create()
-{   
-
-    return view('posts.create');
+{
+    $id = $request->session()->get('id');
+    return view('posts.create')->with('id', $id);
 }
 
 public function store(Request $request)
-{    
-    $rules = [
-		'title' => 'required|max:50',
-		'body'=>'required|max:2000',
-	];
+{
+    $params = $request->validate([
+        'title' => 'required|max:50',
+        'body' => 'required|max:2000',
+    ]);
 
-	$messages = array(
-		'title.required|max:50' => 'タイトルを正しく入力してください。',
-		'body.required|max2000' => '本文を正しく入力してください。',
-
-	);
-
-    $id = Auth::user()->id;
-    $post = new Post;
-    $post->title = $request->input('title');
-    $post->body = $request->input('body');
-    $post->user_id = $id;
-
-    $post->save();
+    Post::create($params);
 
     return redirect()->route('posts.index');
 }
