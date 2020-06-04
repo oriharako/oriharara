@@ -14,6 +14,7 @@ class TodosController extends Controller
     }
  public function store(Request $request) {
       $todo = new Todo();
+      $todo->user_id = Auth::user()->id;
       $todo->body = $request->body;
       $todo->save();
       return redirect('todos/index');

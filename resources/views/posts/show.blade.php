@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('content')
     <div class="container mt-4">
@@ -33,6 +33,10 @@
         <button type="submit" class="btn btn-primary">
             コメントする
         </button>
+	<a href="{{ route('posts.index') }}" class="btn btn-success">
+	投稿一覧に戻る
+    </a>
+
     </div>
 </form>
         <div class="border p-4">
@@ -67,7 +71,7 @@
                     コメント
                 </h2>
 
-                @forelse($post->comments as $comment)
+		@forelse($post->comments as $comment)
                     <div class="border-top p-4">
                         <time class="text-secondary">
                             {{ $comment->created_at->format('Y.m.d H:i') }}

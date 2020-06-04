@@ -1,12 +1,12 @@
-@extends('layouts.default')
-
-@section('title','contact')
+@extends('layouts.app')
 
 @section('content')
-<div class="row">
+<div class="container mt-4">
+
+<div class="mb-4">
     <h1>お問い合わせ</h1>
 </div>
-<div class="row">
+ <div class="card-body">
     <form action="contact/confirm" method="post">
     <div class="form-group">
         <label for="InputEmail">メールアドレス</label>
@@ -34,5 +34,6 @@
     @csrf
     <button type="submit" name="action" class="btn btn-primary" value="sent">送信する</button>
     </form>
+</div>
 </div>
 @endsection

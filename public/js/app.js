@@ -55728,6 +55728,27 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+$(document).ready(function () {
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $("#submit").click(function () {
+    var url = "/posts/create";
+    $.ajax({
+      url: url,
+      data: {
+        text: $("#text").val()
+      },
+      method: "POST"
+    });
+    return false;
+  });
+  window.Echo.channel('post').listen('Posted', function (e) {
+    $("#board").append('<li>' + e.post.text + '</li>');
+  });
+});
 
 /***/ }),
 

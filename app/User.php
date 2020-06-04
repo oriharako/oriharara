@@ -49,8 +49,11 @@ class User extends Authenticatable
     // Profileモデルのデータを引っ張てくる
     return $this->hasOne('App\Image');
   }
-   
-    
+  public function todos()
+   {
+    return $this->hasMany('App\Todo');
+  }
+ 
 }
 
 

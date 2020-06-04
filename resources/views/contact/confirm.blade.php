@@ -1,8 +1,8 @@
-@extends('layouts.default')
-
-@section('title','お問い合わせ内容の確認')
+@extends('layouts.app')
 
 @section('content')
+<div class="container mt-4">
+
 <div class="row">
     <h1>お問い合わせ内容の確認</h1>
 </div>
@@ -31,5 +31,6 @@
     <button type="submit" name="action" class="btn btn-primary" value="back">戻る</button>
     <button type="submit" name="action" class="btn btn-primary" value="sent">送信</button>
     </form>
+</div>
 </div>
 @endsection

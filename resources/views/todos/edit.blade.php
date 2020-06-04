@@ -1,3 +1,7 @@
+@extends('layouts.layouts')
+
+@section('content')
+
 <!doctype html>
 
 <html lang="ja">
@@ -50,3 +54,4 @@
 </script>
   </body>
 </html>
+@endsection

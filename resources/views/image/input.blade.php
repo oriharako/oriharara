@@ -2,6 +2,8 @@
 
 @section('content')
 <!-- エラーメッセージ。なければ表示しない -->
+<div class="container mt-4">
+
 @if ($errors->any())
 <ul>
     @foreach($errors->all() as $error)
@@ -17,6 +19,9 @@
     <label for="photo">画像ファイル:</label>
     <input type="file" class="form-control" name="file">
     <br>
-    <input type="submit">
+    <div class="mb-4">
+    <input type="submit" class="btn btn-primary">
+    </div>
 </form>
+</div>
 @endsection

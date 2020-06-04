@@ -54,9 +54,15 @@ public function upload(Request $request)
         }
     }
 public function output(Request $request) {
-         $data = $request->session()->get('id');
 	 $user_images = Image::all();
-   return view('image.output', compact('data', 'user_images'));
+         $user = User::all();
+   return view('image.output', compact('user_images', 'user'));
+}
+
+public function partner() {
+	 $user_images = Image::find(7);
+         $user = User::find(1);
+   return view('image.partner', compact('user_images', 'user'));
 }
 
 }

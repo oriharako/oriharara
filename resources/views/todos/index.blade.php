@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.layouts')
 
 @section('content')
 
@@ -13,7 +13,7 @@
 
                    <div class="container" style="margin-top:50px;">
                        <h1>Todoリスト追加</h1>
-                       <form action='{{ url('/todos')}}' method="post" style="width:100px;">
+                       <form action='{{ url('/todos')}}' method="post">
                        {{csrf_field()}}
                    </div>  
                     <div class="form-group">
@@ -22,23 +22,17 @@
                     </div>
                         <button type="submit" class="btn btn-primary" style="width:100px;">追加する</button> 
                        </form>
+
+
+
  <h1 style="margin-top:50px;">Todoリスト</h1>
     <table class="table table-striped" style="max-width:1000px; margin-top:20px;">
-    <!-- <thead>
-    <tr>
-      <th></th><th></th><th></th>
-    </tr>
-    
-
-
-</thead> -->
-  <body>
-
 
     @foreach ($todos as $todo)
+@if($todo->user_id === Auth::user()->id)
     <tr>
       <td>{{$todo->body}}</td>
-      <td><form action="{{ action('TodosController@edit', $todo) }}" method="post">
+      <td><form action="{{ action('TodosController@edit', $todo) }}" method="get">
           {{ csrf_field() }}
           {{ method_field('get') }}
           <button type="submit" class="btn btn-primary">編集</button>
@@ -61,8 +55,10 @@
         </form>
       </td> -->
     </tr>
+@endif
     @endforeach
   </table>
+
 </div>
   <!-- オプションのJavaScript -->
   <!-- 最初にjQuery、次にPopper.js、次にBootstrap JS -->
